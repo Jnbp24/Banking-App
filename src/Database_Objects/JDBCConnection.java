@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 
 public class JDBCConnection {
-    private static final String DB_URL = "jdbc:sqlserver://DESKTOP-9TCQJA9\\SQLEXPRESS;databaseName=BankingApp;user=sa;password=zrz76kfv;";
+    private static final String DB_URL = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=BankingApp;user=sa;password=zrz76kfv;";
 
     private static final String username = "root";
     private static final String password = "password";
