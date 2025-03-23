@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginGUI extends BaseFrame {
 
@@ -64,17 +66,18 @@ public class LoginGUI extends BaseFrame {
 
                 //If user is null it means the inputs were invalid, otherwise it is a valid account
                 if (user != null) {
+
                     //Close/get rid of the Login screen
                     LoginGUI.this.dispose();
 
                     //Launch the bankingApp for the specific user
                     BankingAppGUI bankingAppGUI = new BankingAppGUI(user);
+                    bankingAppGUI.setVisible(true);
 
                     JOptionPane.showMessageDialog(bankingAppGUI, "Login Succesful!");
                 } else{
-                    JOptionPane.showMessageDialog(LoginGUI.this, "Login failed..");
+                    JOptionPane.showMessageDialog(LoginGUI.this, "Invalid Login. Please try again");
                 }
-
             }
         });
         add(loginButton);
@@ -84,6 +87,17 @@ public class LoginGUI extends BaseFrame {
         registerLabel.setBounds(0, 510, super.getWidth() - 10, 30);
         registerLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        //Adding mouselistener to close the login window and open the register window instead
+        registerLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                LoginGUI.this.dispose();
+
+                new RegisterGUI().setVisible(true);
+            }
+        });
+
         add(registerLabel);
 
     }
